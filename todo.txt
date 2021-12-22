@@ -1,0 +1,15 @@
+Doing
+
+
+To-do
+Add https support (links with https)
+fix cliptime having ot go like 09:45
+
+I dont know how to do this
+Add better ui
+
+
+Late game
+Add help screen + credits
+Upload to github
+make the system unpause the video instead of start (ai correction?)

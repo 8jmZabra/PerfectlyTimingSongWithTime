@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <style>
+            h1 {
+                text-align: center;
+                color: rgba(255, 255, 255, 0.705);
+                font-family:Verdana, Geneva, Tahoma, sans-serif;
+            }
+            h2 {
+                color: rgba(255, 255, 255, 0.705);
+                font-family:Verdana, Geneva, Tahoma, sans-serif;
+            }
+            body{
+                background-color: rgba(0, 0, 0, 0.835);
+            }
+            .stats {
+                line-height: 0.9em
+            }
+            #textDiv {
+                display: grid;
+                width: 100%;
+            }
+            .innerTextDiv {
+                display: inline-flex;
+                height: 40px;
+            }
+            .error {
+                padding-left: 5px;
+                color: rgb(255, 0, 0);
+                font-size: 21px;
+                font-family:Verdana, Geneva, Tahoma, sans-serif;
+            }
+            .textbox {
+                width: 50%;
+                height: 30px;
+                border-radius: 5px;
+                font-size: 18px;
+                margin: 4px 0;
+            }
+        </style>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <meta charset="utf-8">
+        <title>PTSWT</title>
+        <h1>Perfectly Timing Song With Time</h1>
+    </head>
+    <body>      
+        <div class="stats">
+            <h2 id="desiredlength"></h2>
+            <h2 id="vidlength"></h2>
+        </div>
+
+        <div id="textDiv">
+            <div class="innerTextDiv">
+                <input value="Enter video link without https (www.youtube.com/watch?v=20YnODel7ag)" type="text" class="textbox" id="vidid" onfocus="this.value=''">
+                <h1 class="error" id="linkerror"></h1>
+            </div>
+
+            <div class="innerTextDiv">
+                <input value="Enter desired video-time (3:46)" type="text" class="textbox" id="cliptime" onfocus="this.value=''">
+                <h1 class="error" id="cliperror"></h1>
+            </div>
+
+            <div class="innerTextDiv">
+                <input value="Enter real-time (19:30)" type="text" class="textbox" id="time" onfocus="this.value=''">
+                <h1 class="error" id="timeerror"></h1>
+            </div>
+        </div>
+    </body>
+    <script src="createVid.js"></script>
+    <script src="index.js"></script>
+</html>
