@@ -66,6 +66,11 @@ function loop() {
 vidid.addEventListener('change', (event) => {
     var str = vidid.value;
 
+    // Remove "https://" from link
+    if (str.match("https:\/\/")) {
+        str = str.substring(8 , str.length);
+    }
+
     const r = 'youtu(?:.*\/v\/|.*v\=|\.be\/)([A-Za-z0-9_\-]{11})'; // valid yt id regex https://stackoverflow.com/a/19647711
     // Check if str is a youtube video
     if (str.match(r)) {
@@ -82,18 +87,18 @@ vidid.addEventListener('change', (event) => {
 
 cliptime.addEventListener('change', (event) =>{
     var str = cliptime.value;
+    var indexOf = str.indexOf(":");
 
-    const r = '[0-9]:[0-9]'; // Basic regex for timestamp
+    var s1 = str.substring(0, indexOf);
+    var s2 = str.substring(indexOf+1, str.length);
+
     // Check if time is valid
-    if (str.match(r)) {
+    if (str.match(":")) {
         // Adjust error box
         cliperror.innerHTML = "";
 
-        // Work out time in seconds
-        var timeMins = parseInt(str.substring(0, 2));
-        var timeSecs = parseInt(str.substring(3, 5));
-        
-        desiredClip = (timeMins*60)+timeSecs // Converts minutes to seconds, hours to seconds and adds them together
+        // time in seconds
+        desiredClip = (parseInt(s1)*60)+parseInt(s2) // Converts minutes to seconds, hours to seconds and adds them together
         stat1.innerHTML = "Desired Clip: " + desiredClip;
     } else {
         // Adjust error box
@@ -103,12 +108,13 @@ cliptime.addEventListener('change', (event) =>{
 
 time.addEventListener('change', (event) => {
     var str = time.value;
-    var timeHrs = parseInt(str.substring(0, 2));
-    var timeMins = parseInt(str.substring(3, 5));
+    var indexOf = str.indexOf(":");
+
+    var s1 = str.substring(0, indexOf);
+    var s2 = str.substring(indexOf+1, str.length);
     
-    const r = '[0-9]:[0-9]'; // Basic regex for timestamp
-    if (str.match(r)) {
-        desirTimeInSecs = (timeMins*60)+(timeHrs*3600); // Converts minutes to seconds, hours to seconds and adds them together
+    if (str.match(":")) {
+        desirTimeInSecs = (parseInt(s2)*60)+(parseInt(s1)*3600); // Converts minutes to seconds, hours to seconds and adds them together
         console.log(desirTimeInSecs - desiredClip - currTimeInSecs);
         if (desirTimeInSecs - desiredClip - currTimeInSecs >= 0) {
             timeerror.innerHTML = "";
