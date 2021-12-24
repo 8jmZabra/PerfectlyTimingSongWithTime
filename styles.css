@@ -34,3 +34,9 @@ body{
     font-size: 18px;
     margin: 4px 0;
 }
+
+.smolbutton {
+    float: right;
+    width: 30px;
+    height: 30px;
+}
