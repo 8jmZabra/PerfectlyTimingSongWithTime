@@ -55,6 +55,7 @@ function loop() {
     console.log(desirTimeInSecs - desiredClip - currTimeInSecs);
     // Start the video if time is appropriate
     if (currTimeInSecs == (desirTimeInSecs - desiredClip)) {
+        player.seekTo(0);
         player.playVideo();
     }
     // Loop but make sure it needs to loop
