@@ -48,6 +48,12 @@ function updateDate() {
     currTimeInSecs = secs+(mins*60)+(hrs*3600);
 }
 
+// Start vid
+function startVid() {
+    player.seekTo(0);
+    player.playVideo();
+}
+
 // Update time + check if video should start
 function loop() {
     updateDate();
@@ -59,8 +65,10 @@ function loop() {
         player.playVideo();
     }
     // Loop but make sure it needs to loop
-    if (desirTimeInSecs - desiredClip - currTimeInSecs >= 0) {
-        setTimeout(loop, 1000); // Play loop in 1 second
+    if (desirTimeInSecs - desiredClip - currTimeInSecs == 1) {
+        setTimeout(startVid, 1000)
+    } else if (desirTimeInSecs - desirTimeInSecs - currTimeInSecs != 0) {
+        setTimeout(loop, 1000/10); // Play loop in 1 second
     }
 }
 
